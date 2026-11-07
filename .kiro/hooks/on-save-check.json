@@ -1,0 +1,1 @@
+{"actions":["Run: node --test test/tasks.test.mjs","If tests fail, do not commit until they pass"],"description":"Documented hook definition for Graveyard Tasks. This file documents the intended on-save behaviour; it is a definition, not a claim that a Kiro runtime executed it.","event":"on-save","name":"on-save-check","when":"When app.js or test/tasks.test.mjs is saved"}

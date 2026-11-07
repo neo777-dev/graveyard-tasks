@@ -1,0 +1,102 @@
+/* Graveyard Tasks — dark Halloween night, readable first. */
+* { box-sizing: border-box; }
+:root {
+  --bg: #0b0e1a;
+  --panel: #161a2e;
+  --panel-2: #1e2438;
+  --ink: #f2ede4;
+  --muted: #b9b3a6;
+  --orange: #ff8c1a;
+  --orange-soft: #ffb347;
+  --purple: #8b5cf6;
+  --red: #e5484d;
+  --green: #7dd87d;
+  --border: #333a55;
+}
+body {
+  margin: 0;
+  font-family: Georgia, 'Times New Roman', serif;
+  background: radial-gradient(ellipse at 80% 0%, #1c2340 0%, var(--bg) 55%);
+  color: var(--ink);
+  min-height: 100vh;
+  line-height: 1.5;
+}
+.moon { position: fixed; top: 14px; right: 22px; font-size: 44px; z-index: 0; filter: drop-shadow(0 0 18px #ffe9a8); }
+.bats { position: fixed; top: 70px; right: 90px; font-size: 20px; opacity: .7; z-index: 0; animation: fly 9s ease-in-out infinite alternate; }
+@keyframes fly { from { transform: translateX(0) translateY(0); } to { transform: translateX(-24px) translateY(10px); } }
+.fog {
+  position: fixed; left: 0; right: 0; bottom: 0; height: 120px; pointer-events: none; z-index: 0;
+  background: linear-gradient(transparent, rgba(180, 190, 220, .14));
+}
+.hero { text-align: center; padding: 48px 16px 8px; position: relative; z-index: 1; }
+.eyebrow { color: var(--orange-soft); letter-spacing: .18em; font-size: 13px; margin: 0 0 8px; font-family: Arial, sans-serif; }
+h1 { font-size: clamp(34px, 6vw, 56px); margin: 0; text-shadow: 0 0 24px rgba(255, 140, 26, .45); }
+.tagline { color: var(--muted); font-size: 18px; margin: 8px 0 0; }
+main { max-width: 880px; margin: 0 auto; padding: 16px; position: relative; z-index: 1; }
+.panel { background: var(--panel); border: 1px solid var(--border); border-radius: 14px; padding: 18px; margin: 16px 0; }
+h2 { margin: 0 0 12px; font-size: 22px; }
+.hint { color: var(--muted); font-size: 14px; font-weight: normal; }
+.stats { display: flex; flex-wrap: wrap; gap: 12px; align-items: stretch; background: var(--panel); border: 1px solid var(--border); border-radius: 14px; padding: 16px; }
+.stat { flex: 1 1 90px; text-align: center; background: var(--panel-2); border-radius: 10px; padding: 10px 6px; }
+.stat strong { display: block; font-size: 28px; color: var(--orange-soft); }
+.stat span { color: var(--muted); font-size: 13px; font-family: Arial, sans-serif; }
+.stat.danger strong { color: var(--red); }
+.progress { display: flex; align-items: center; gap: 10px; font-family: Arial, sans-serif; color: var(--muted); font-size: 13px; }
+.ring-text { fill: var(--ink); font-size: 15px; font-family: Arial, sans-serif; font-weight: bold; }
+#progress-ring-fg { transition: stroke-dasharray .5s ease; }
+
+form { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 10px; align-items: end; }
+label { display: grid; gap: 5px; font-size: 13px; color: var(--muted); font-family: Arial, sans-serif; }
+input, select { background: #0e1222; color: var(--ink); border: 1px solid var(--border); border-radius: 8px; padding: 10px; font-size: 15px; width: 100%; }
+input:focus, select:focus, button:focus { outline: 2px solid var(--orange); outline-offset: 2px; }
+button { background: var(--orange); color: #1a1005; border: none; border-radius: 8px; padding: 10px 14px; font-size: 15px; font-weight: bold; cursor: pointer; font-family: Arial, sans-serif; }
+button:hover { background: var(--orange-soft); }
+button:disabled { opacity: .45; cursor: not-allowed; }
+button.secondary, #cancel-edit { background: transparent; color: var(--ink); border: 1px solid var(--border); }
+.error { color: #ff9a9e; margin: 6px 0 0; grid-column: 1 / -1; font-family: Arial, sans-serif; }
+
+.controls { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+.filters { display: flex; gap: 8px; flex-wrap: wrap; }
+.filter-btn { background: transparent; color: var(--ink); border: 1px solid var(--border); }
+.filter-btn.active { background: var(--orange); color: #1a1005; border-color: var(--orange); }
+.controls input[type="search"] { flex: 1 1 180px; }
+.controls label { display: flex; gap: 8px; align-items: center; }
+.controls select { width: auto; }
+
+.yard { display: grid; gap: 12px; }
+.tomb {
+  display: flex; gap: 14px; align-items: flex-start;
+  background: linear-gradient(#232842, #1a1e33);
+  border: 1px solid var(--border); border-top: 4px solid var(--orange);
+  border-radius: 12px 12px 8px 8px; padding: 14px;
+}
+.tomb.skeleton { border-top-color: var(--red); background: linear-gradient(#3a2027, #241722); }
+.tomb.ghost { opacity: .82; border-top-color: var(--purple); }
+.tomb-icon { font-size: 34px; line-height: 1; }
+.tomb.ghost .tomb-icon { animation: float 2.6s ease-in-out infinite; }
+@keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+.tomb-body { flex: 1; min-width: 0; }
+.tomb-body h3 { margin: 0 0 4px; font-size: 18px; }
+.tomb.ghost .tomb-body h3 { text-decoration: line-through; color: var(--muted); }
+.meta { margin: 0; color: var(--muted); font-family: Arial, sans-serif; font-size: 14px; }
+.tag { display: inline-block; margin-top: 8px; font-size: 12px; font-weight: bold; font-family: Arial, sans-serif; padding: 3px 8px; border-radius: 20px; }
+.tag.overdue { background: var(--red); color: #fff; }
+.tag.rip { background: var(--purple); color: #fff; }
+.tomb-actions { display: flex; flex-direction: column; gap: 6px; }
+.tomb-actions button { padding: 7px 10px; font-size: 13px; background: #2a3050; color: var(--ink); border: 1px solid var(--border); }
+.tomb-actions button:hover { background: #38406a; }
+.empty { color: var(--muted); margin: 4px 0; }
+.tool-row { display: flex; flex-wrap: wrap; gap: 10px; }
+.tool-row button { background: #2a3050; color: var(--ink); border: 1px solid var(--border); }
+.tool-row button:hover { background: #38406a; }
+.note { color: var(--muted); font-size: 13px; font-family: Arial, sans-serif; }
+footer { text-align: center; color: var(--muted); padding: 8px 16px 40px; font-family: Arial, sans-serif; font-size: 13px; position: relative; z-index: 1; }
+.ghost-burst { position: fixed; left: 50%; top: 40%; font-size: 64px; z-index: 99; pointer-events: none; animation: rise 1.6s ease-out forwards; }
+@keyframes rise { from { opacity: 1; transform: translate(-50%, 0); } to { opacity: 0; transform: translate(-50%, -160px); } }
+@media (max-width: 640px) {
+  form { grid-template-columns: 1fr 1fr; }
+  .tomb { flex-direction: column; }
+  .tomb-actions { flex-direction: row; flex-wrap: wrap; }
+  .moon { font-size: 32px; }
+  .bats { display: none; }
+}

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Graveyard Tasks — A Halloween Task Manager</title>
+<meta name="description" content="Graveyard Tasks: a spooky, offline task manager. Bury your tasks, watch finished ones rise as ghosts.">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="moon" aria-hidden="true">🌕</div>
+<div class="bats" aria-hidden="true">🦇&nbsp;🦇&nbsp;🦇</div>
+
+<header class="hero">
+  <p class="eyebrow">🎃 KIROWEEN 2026 · COSTUME CONTEST</p>
+  <h1>🪦 Graveyard Tasks 👻</h1>
+  <p class="tagline">Bury your tasks. Watch the finished ones rise as ghosts.</p>
+</header>
+
+<main>
+  <section class="stats" aria-label="Task statistics">
+    <div class="stat"><strong id="stat-total">0</strong><span>Total</span></div>
+    <div class="stat"><strong id="stat-active">0</strong><span>Active</span></div>
+    <div class="stat"><strong id="stat-completed">0</strong><span>Laid to rest</span></div>
+    <div class="stat danger"><strong id="stat-overdue">0</strong><span>Overdue 💀</span></div>
+    <div class="progress">
+      <svg viewBox="0 0 100 100" width="72" height="72" role="img" aria-label="Completion progress">
+        <circle cx="50" cy="50" r="40" fill="none" stroke="#2a2f45" stroke-width="10"></circle>
+        <circle id="progress-ring-fg" cx="50" cy="50" r="40" fill="none" stroke="#ff8c1a" stroke-width="10" stroke-linecap="round" stroke-dasharray="0 251" transform="rotate(-90 50 50)"></circle>
+        <text x="50" y="55" text-anchor="middle" class="ring-text" id="progress-text">0%</text>
+      </svg>
+      <span>laid to rest</span>
+    </div>
+  </section>
+
+  <section class="panel add-panel">
+    <h2>🕯️ Bury a new task</h2>
+    <form id="task-form">
+      <label>Title *<input id="title" type="text" maxlength="120" placeholder="e.g. Carve the pumpkin" required></label>
+      <label>Due date<input id="due-date" type="date"></label>
+      <label>Priority
+        <select id="priority">
+          <option value="low">Low — 1 candle</option>
+          <option value="medium" selected>Medium — 2 candles</option>
+          <option value="high">High — 3 candles</option>
+        </select>
+      </label>
+      <label>Category
+        <select id="category">
+          <option>Haunt</option>
+          <option>Treat</option>
+          <option>Chore</option>
+          <option>Spell</option>
+        </select>
+      </label>
+      <button type="submit" id="submit-btn">🪦 Bury this task</button>
+      <button type="button" id="cancel-edit" hidden>Cancel edit</button>
+      <p id="form-error" class="error" role="alert"></p>
+    </form>
+  </section>
+
+  <section class="panel controls">
+    <div class="filters" role="group" aria-label="Filter tasks">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="active">Active</button>
+      <button class="filter-btn" data-filter="completed">Completed</button>
+      <button class="filter-btn" data-filter="overdue">Overdue 💀</button>
+    </div>
+    <input id="search" type="search" placeholder="🔍 Search tasks…" aria-label="Search tasks">
+    <label>Sort
+      <select id="sort">
+        <option value="due">Due date</option>
+        <option value="priority">Priority</option>
+        <option value="created">Newest first</option>
+      </select>
+    </label>
+  </section>
+
+  <section class="panel">
+    <h2>🪦 The Graveyard <span class="hint">— active tasks</span></h2>
+    <div id="graveyard" class="yard"></div>
+  </section>
+
+  <section class="panel rip">
+    <h2>👻 Rest in Peace <span class="hint">— completed tasks rise here</span></h2>
+    <div id="rip-yard" class="yard"></div>
+  </section>
+
+  <section class="panel tools">
+    <h2>🧰 Graveyard tools</h2>
+    <div class="tool-row">
+      <button id="export-btn">⬇️ Export JSON</button>
+      <button id="import-btn">⬆️ Import JSON</button>
+      <input id="import-file" type="file" accept="application/json,.json" hidden>
+      <button id="clear-completed">🧹 Clear completed</button>
+      <button id="reset-seed">🎃 Reset sample tasks</button>
+    </div>
+    <p class="note">Tasks are stored only in your browser (localStorage). Nothing leaves your device. Export a JSON backup before clearing your browser data.</p>
+  </section>
+</main>
+
+<footer>
+  <p>Graveyard Tasks · Kiroween 2026 · Costume Contest · Built with Kiro · MIT License</p>
+  <p class="note">No accounts, no servers, no tracking. Works offline.</p>
+</footer>
+
+<div class="fog" aria-hidden="true"></div>
+<script type="module" src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,4 @@
+# Graveyard Tasks — do NOT ignore .kiro (Kiroween requires it at the repo root)
+node_modules/
+.DS_Store
+*.log
